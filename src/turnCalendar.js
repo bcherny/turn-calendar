@@ -1685,20 +1685,6 @@ angular
             discolorSelectedDateRange();
             colorSelectedDateRange()
         }
-        
-        /*
-         * This will make sure that click outside of calendar will close the calendar
-         * (behave same as cancel button click)
-         */
-        $document.bind('click', function (event) {
-            if(!angular.element('turn-calendar').find(event.target).length){
-                $scope.$apply(function(){
-                    if ($scope.currentSelectedStartDate && $scope.currentSelectedEndDate) {
-                        $scope.cancel();
-                    }
-                });
-            }
-        });
 
     })
     .directive('turnCalendar', function () {
