@@ -98,6 +98,8 @@ module.exports = (grunt) ->
 
     sass:
       main:
+        options:
+          sourcemap: 'none'
         files:
           'dist/turnCalendar.css': 'src/turnCalendar.scss'
 
