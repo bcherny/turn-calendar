@@ -146,14 +146,14 @@ angular
          *
          * @type {array}
          */
-        monthName : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        monthName : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
         /**
          * Default day name to display on calendar
          *
          * @type {array}
          */
-        dayName: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        dayName: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         startingMonth: new Date().getMonth(),
         startingYear: new Date().getFullYear(),
         startDayOfWeek: 0
@@ -386,6 +386,13 @@ angular
          * @type {number}
          */
         const MONTHS_IN_YEAR = 12;
+
+        /**
+         * Used in the template to highlight the current date
+         *
+         * @type {date}
+         */
+        $scope.today = new Date();
 
 
         /**
@@ -1249,6 +1256,15 @@ angular
             if ($scope.applyCallback) {
                 $scope.applyCallback();
             }
+
+            if ($scope.startDate) {
+                $scope.startDate = selectedStartDate.date
+            }
+
+            if ($scope.endDate) {
+                $scope.endDate = selectedEndDate.date
+            }
+
         };
 
         $scope.cancel = function () {
@@ -1305,7 +1321,10 @@ angular
 
         // Setting default start date for singleDate mode
         if (!$scope.isNotSingleDateMode) {
-            setSingleDate(generateMetaDateObject(currentDate, currentDate.getMonth()));
+            setSingleDate(generateMetaDateObject(
+                ($scope.startDate || currentDate),
+                ($scope.startDate || currentDate).getMonth()
+            ));
             $scope.currentSelectedStartDate = selectedStartDate;
             $scope.currentSelectedEndDate = selectedEndDate;
         }
