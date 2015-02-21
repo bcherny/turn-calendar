@@ -1167,6 +1167,9 @@ angular
 
             if (!$scope.isNotSingleDateMode) {
                 setSingleDate(day);
+                if ($scope.dayClickCallback()) {
+                    $scope.dayClickCallback()();
+                }
                 return;
             }
 
@@ -1726,6 +1729,7 @@ angular
                 startDate: '=',
                 endDate: '=',
                 applyCallback: '&',
+                dayClickCallback: '&',
                 selectionMode: '='
             },
             controller: 'CalendarController',

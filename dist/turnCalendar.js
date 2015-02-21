@@ -927,6 +927,9 @@ angular.module('turn/calendar', ['calendarTemplates']).constant('turnCalendarDef
       }
       if (!$scope.isNotSingleDateMode) {
         setSingleDate(day);
+        if ($scope.dayClickCallback()) {
+          $scope.dayClickCallback()();
+        }
         return;
       }
       if (isNoneSelected()) {
@@ -1343,6 +1346,7 @@ angular.module('turn/calendar', ['calendarTemplates']).constant('turnCalendarDef
       startDate: '=',
       endDate: '=',
       applyCallback: '&',
+      dayClickCallback: '&',
       selectionMode: '='
     },
     controller: 'CalendarController',
