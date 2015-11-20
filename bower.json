@@ -1,6 +1,6 @@
 {
   "name": "calendar",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generic calendar component for Turn",
   "main": "dist/calendar.js",
   "authors": [
@@ -8,10 +8,10 @@
   ],
   "license": "Apache2",
   "dependencies": {
-    "angular": "1.0.8"
+    "angular": "1.x"
   },
   "devDependencies": {
-    "angular-mocks": "~1.0.8",
+    "angular-mocks": "1.x",
     "jquery": "~2.1.1"
   },
   "ignore": [
