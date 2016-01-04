@@ -290,10 +290,8 @@ angular
         var pickValue = function (property) {
 
             if (angular.isDefined($attrs[property])) {
-                if ($scope.$parent.$eval($attrs[property]) != null)
-                    return $scope.$parent.$eval($attrs[property]);
-                else
-                    return $attrs[property];
+                var value = $scope.$parent.$eval($attrs[property]);
+                return value != null ? value : $attrs[property];
             }
 
             if (angular.isDefined(calendarOptions) && calendarOptions.hasOwnProperty(property)) {
