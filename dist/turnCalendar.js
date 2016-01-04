@@ -236,7 +236,10 @@ angular.module('turn/calendar', ['calendarTemplates']).constant('turnCalendarDef
          */
     var pickValue = function (property) {
       if (angular.isDefined($attrs[property])) {
-        return $scope.$parent.$eval($attrs[property]) || $attrs[property];
+        if ($scope.$parent.$eval($attrs[property]) != null)
+          return $scope.$parent.$eval($attrs[property]);
+        else
+          return $attrs[property];
       }
       if (angular.isDefined(calendarOptions) && calendarOptions.hasOwnProperty(property)) {
         return calendarOptions[property];
